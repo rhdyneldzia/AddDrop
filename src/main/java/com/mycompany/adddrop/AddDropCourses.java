@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class AddDropCourses {
 
     /**
-     * System Default Properties
+     * Sesuatu yang dah dari System secara
+     * natural/parameter sebuah system
      */
     private static ArrayList<Course> COURSE_LIST = new ArrayList<Course>();
     static Course c1 = new Course("CSE110", "Fundamentals of Programming", "8:00-9:30", 'A', 30, 2);
@@ -31,7 +32,8 @@ public class AddDropCourses {
     private static final int MAX_CC = 23;
     
     /**
-     * User default properties
+     * Sesuatu yang dah dari User secara 
+     * natural
      */
     private static LinkedList<Course> userSelectedCourses = new LinkedList<Course>();
     private static int userCreditCount = 0;
@@ -66,13 +68,15 @@ public class AddDropCourses {
                     System.out.println("Course Code Course Name Time Group Seats Credit");
                     System.out.println(displaySystemCourses());
                     System.out.println("-------------------");
-                    
+
                     System.out.println("Enter the course code: ");
                     String courseCode = input.next();
-                    for(Course course : COURSE_LIST) {
+                    for(Course course : COURSE_LIST) { // Cara ngeloopnya (Object (kalo satu) : List/Array yang ditujuin)
                         if(course.code.equals(courseCode)) {
                             System.out.println(registerCourse(course));
                             break;
+                        } else {
+                            System.out.println("Invalid course code");
                         }
                     }
                     break;
