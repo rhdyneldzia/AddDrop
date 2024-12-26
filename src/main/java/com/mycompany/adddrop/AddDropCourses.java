@@ -46,16 +46,49 @@ public class AddDropCourses {
         System.out.println("********************************");
         System.out.println("\n");
 
-        System.out.println("Registered Courses: ");
-        System.out.println("-------------------");
-        System.out.println("Course Code Course Name Time Group Seats Credit");
-        displayUserCourses();
-        System.out.println("-------------------");
-
-        System.out.println("1. Register for a course\n2. Drop a course\n4. Exit");
-        Scanner input = new Scanner(System.in);
+        boolean sysstatus = true;
         
-        // Buat input disini
+        while(sysstatus) {
+            System.out.println("Registered Courses: ");
+            System.out.println("-------------------");
+            System.out.println("Course Code Course Name Time Group Seats Credit");
+            System.out.println(displayUserCourses());
+            System.out.println("-------------------");
+
+            System.out.println("1. Register for a course\n2. Drop a course\n0. Exit");
+            Scanner input = new Scanner(System.in);
+            int choice = input.nextInt();
+
+            switch(choice) {
+                case 1:
+                    System.out.println("Available Courses: ");
+                    System.out.println("-------------------");
+                    System.out.println("Course Code Course Name Time Group Seats Credit");
+                    System.out.println(displaySystemCourses());
+                    System.out.println("-------------------");
+                    
+                    System.out.println("Enter the course code: ");
+                    String courseCode = input.next();
+                    for(Course course : COURSE_LIST) {
+                        if(course.code.equals(courseCode)) {
+                            System.out.println(registerCourse(course));
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("Enter the course code: ");
+                    String dropCourseCode = input.next();
+                    System.out.println(dropCourse(dropCourseCode));
+                    break;
+                case 0:
+                    sysstatus = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+        
     }
 
     /**
@@ -110,7 +143,20 @@ public class AddDropCourses {
         }
         return sb.toString();
     }
-    
+
+    /**
+     * Display System Courses
+     */
+    public static String displaySystemCourses() {
+        if(COURSE_LIST.isEmpty()) {
+            return "No courses available";
+        }
+        StringBuilder sb = new StringBuilder();
+        for(Course course : COURSE_LIST) {
+            sb.append(course.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 
     /**
      * Method ini untuk menambahkan course
