@@ -77,19 +77,24 @@ public class AddDropCourses {
                             break;
                         } else {
                             System.out.println("Invalid course code");
+                            break;
                         }
                     }
+                    System.out.println("\n\n\n");
                     break;
                 case 2:
                     System.out.println("Enter the course code: ");
                     String dropCourseCode = input.next();
                     System.out.println(dropCourse(dropCourseCode));
+                    System.out.println("\n\n\n");
                     break;
                 case 0:
                     sysstatus = false;
+                    System.out.println("\n\n\n");
                     break;
                 default:
                     System.out.println("Invalid choice");
+                    System.out.println("\n\n\n");
             }
         }
         
