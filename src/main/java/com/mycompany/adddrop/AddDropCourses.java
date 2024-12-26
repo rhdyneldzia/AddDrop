@@ -75,9 +75,6 @@ public class AddDropCourses {
                         if(course.code.equals(courseCode)) {
                             System.out.println(registerCourse(course));
                             break;
-                        } else {
-                            System.out.println("Invalid course code");
-                            break;
                         }
                     }
                     System.out.println("\n\n\n");
@@ -89,6 +86,7 @@ public class AddDropCourses {
                     System.out.println("\n\n\n");
                     break;
                 case 0:
+                    System.out.println("Thank you for using the Add/Drop System");
                     sysstatus = false;
                     System.out.println("\n\n\n");
                     break;
